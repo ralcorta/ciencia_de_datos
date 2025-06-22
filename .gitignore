@@ -11,10 +11,6 @@ venv/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Model files
-model/*.pkl
-model/*.joblib
-
 # Data files
 *.csv
 *.xlsx
