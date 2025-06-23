@@ -1,14 +1,13 @@
-# Predicción de diabetes con Bosque aleatorio y Flask
+# Aplicación de Predicción de Diabetes usando Random Forest
 
-Este proyecto busca desarrollar un modelo predictivo de diabetes utilizando el algoritmo Bosque aleatorio y el framework Flask. El modelo se entrena con un conjunto de datos que contiene diversos parámetros de salud y sus correspondientes resultados de diabetes.
+Este proyecto tiene como objetivo crear una herramienta de diagnóstico preventivo para estimar el riesgo de padecer diabetes tipo 2. Utiliza técnicas de aprendizaje automático, específicamente el algoritmo de Random Forest, combinado con Flask para desplegar una aplicación web.
 
-## Características
+## Funcionalidades del Proyecto
 
-- Utiliza el algoritmo Bosque aleatorio para una predicción precisa
-- Framework Flask para crear una aplicación web intuitiva
-- Interfaz de usuario interactiva para introducir parámetros de salud
-- Predice la probabilidad de diabetes basándose en los datos proporcionados
+- **Modelo Predictivo:** Emplea el algoritmo de Random Forest
+- **App:** Construido con Flask, html y css.
+- **Predicción:** Permite a los usuarios ingresar parámetros clínicos como glucosa, presión arterial, índice de masa corporal (IMC), y edad, proporcionando una evaluación inmediata del riesgo.
 
-## Conjunto de datos
+## Datos Utilizados
 
-El conjunto de datos utilizado para entrenar el modelo proviene de Kaggle y contiene diversos atributos de salud, como el nivel de glucosa, la presión arterial, el IMC y la edad, junto con sus correspondientes resultados de diabetes.
+El modelo se ha desarrollado utilizando un conjunto de datos públicos que incluye múltiples variables clínicas y demográficas relacionadas con la diabetes. Entre las variables consideradas destacan los niveles de glucosa, presión arterial, IMC, edad y otras métricas.
