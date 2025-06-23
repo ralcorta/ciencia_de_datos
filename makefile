@@ -6,9 +6,13 @@ CODE=model_code/code.py
 all: model
 
 # Run the Python script
-model:
+run-model:
 	$(PYTHON) $(CODE)
 
 # Install dependencies
 install:
 	pip install -r requirements.txt
+
+# Clean generated files
+clean:
+	rm -f model/*.pkl

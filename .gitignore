@@ -11,9 +11,6 @@ venv/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Data files
-*.csv
-*.xlsx
 
 # Logs and temporary files
 *.log
