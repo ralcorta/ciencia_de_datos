@@ -3,7 +3,10 @@ PYTHON=python3
 CODE=model_code/code.py
 
 # Default target
-all: model
+all: run-model
+
+run-app:
+	$(PYTHON) app.py
 
 # Run the Python script
 run-model:

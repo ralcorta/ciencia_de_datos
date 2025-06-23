@@ -11,7 +11,9 @@ from sklearn.metrics import (
     classification_report,
     accuracy_score,
     confusion_matrix,
-    mean_absolute_error
+    mean_absolute_error,
+    recall_score,
+    f1_score
 )
 import os
 
@@ -28,11 +30,11 @@ df_copy[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']] = df_co
     'Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI'
 ]].replace(0, np.nan)
 
-df_copy['Glucose'].fillna(df_copy['Glucose'].mean(), inplace=True)
-df_copy['BloodPressure'].fillna(df_copy['BloodPressure'].mean(), inplace=True)
-df_copy['SkinThickness'].fillna(df_copy['SkinThickness'].median(), inplace=True)
-df_copy['Insulin'].fillna(df_copy['Insulin'].median(), inplace=True)
-df_copy['BMI'].fillna(df_copy['BMI'].median(), inplace=True)
+df_copy['Glucose'] = df_copy['Glucose'].fillna(df_copy['Glucose'].mean())
+df_copy['BloodPressure'] = df_copy['BloodPressure'].fillna(df_copy['BloodPressure'].mean())
+df_copy['SkinThickness'] = df_copy['SkinThickness'].fillna(df_copy['SkinThickness'].median())
+df_copy['Insulin'] = df_copy['Insulin'].fillna(df_copy['Insulin'].median())
+df_copy['BMI'] = df_copy['BMI'].fillna(df_copy['BMI'].median())
 
 # -------------------- GRÁFICOS --------------------
 
@@ -87,18 +89,22 @@ y_pred = classifier.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
 cr = classification_report(y_test, y_pred)
 
 print(f"Mean Absolute Error (MAE): {mae:.4f}")
 print(f"Mean Squared Error (MSE): {mse:.4f}")
+print(f"R² Score: {r2:.4f}")
+print(f"Recall: {recall:.4f}")
+print(f"F1 Score: {f1:.4f}")
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("Matriz de confusión:")
 print(cm)
 print("Reporte de clasificación:")
-print(cr)
-print("Reporte con nombres:")
 print(classification_report(y_test, y_pred, target_names=['No Diabetes', 'Diabetes']))
+
 
 # Matriz de confusión
 plt.figure(figsize=(6, 4))
