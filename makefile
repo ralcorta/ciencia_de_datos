@@ -1,6 +1,6 @@
 # Variables
 PYTHON=python3
-CODE=model_code/code.py
+CODE=model/train.py
 
 # Default target
 all: run-model

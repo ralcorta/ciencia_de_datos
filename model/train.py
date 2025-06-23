@@ -17,12 +17,11 @@ from sklearn.metrics import (
 )
 import os
 
-# Asegurar que la carpeta static y model existen
 os.makedirs('static', exist_ok=True)
 os.makedirs('model', exist_ok=True)
 
 # -------------------- CARGA Y LIMPIEZA --------------------
-df = pd.read_csv('dataset_diabetes.csv')
+df = pd.read_csv('model/data/dataset_diabetes.csv')
 df = df.rename(columns={'DiabetesPedigreeFunction': 'DPF'})
 
 df_copy = df.copy(deep=True)
@@ -38,7 +37,6 @@ df_copy['BMI'] = df_copy['BMI'].fillna(df_copy['BMI'].median())
 
 # -------------------- GRÁFICOS --------------------
 
-# Distribución de Outcome
 plt.figure()
 sns.countplot(x='Outcome', data=df_copy)
 plt.title("Distribución de pacientes con y sin diabetes")
@@ -47,14 +45,12 @@ plt.ylabel("Cantidad")
 plt.savefig("static/distribucion_outcome.png")
 plt.close()
 
-# Matriz de correlación
 plt.figure(figsize=(10, 8))
 sns.heatmap(df_copy.corr(), annot=True, cmap="coolwarm", fmt=".2f")
 plt.title("Matriz de correlación entre variables")
 plt.savefig("static/matriz_correlacion.png")
 plt.close()
 
-# Distribución de Glucosa según Outcome
 plt.figure()
 sns.histplot(data=df_copy, x='Glucose', hue='Outcome', kde=True, element='step')
 plt.title("Distribución de Glucosa por Outcome")
@@ -63,7 +59,6 @@ plt.ylabel("Frecuencia")
 plt.savefig("static/histograma_glucosa.png")
 plt.close()
 
-# Boxplots para variables seleccionadas
 features_to_plot = ['Glucose', 'BloodPressure', 'BMI', 'Age']
 for feature in features_to_plot:
     plt.figure()
@@ -106,7 +101,6 @@ print("Reporte de clasificación:")
 print(classification_report(y_test, y_pred, target_names=['No Diabetes', 'Diabetes']))
 
 
-# Matriz de confusión
 plt.figure(figsize=(6, 4))
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
             xticklabels=['No Diabetes', 'Diabetes'],
@@ -120,5 +114,4 @@ plt.close()
 # -------------------- GUARDAR MODELO --------------------
 filename = 'model/diabetes-model.pkl'
 pickle.dump(classifier, open(filename, 'wb'))
-
 print("Modelo entrenado correctamente y guardado en 'model/diabetes-model.pkl'.")
