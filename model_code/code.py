@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import mean_squared_error, r2_score, classification_report, accuracy_score, confusion_matrix, mean_absolute_error
 
-df = pd.read_csv('kaggle_diabetes.csv')
+df = pd.read_csv('dataset_diabetes.csv')
 df = df.rename(columns={'DiabetesPedigreeFunction': 'DPF'})
 df_copy = df.copy(deep=True)
 df_copy[['Glucose', 'BloodPressure', 'SkinThickness', 'Insulin', 'BMI']] = df_copy[[
